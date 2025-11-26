@@ -38,7 +38,7 @@ input { padding: 10px; border-radius: 6px; border: none; transition: 0.25s; flex
 button { padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer; font-weight: bold; transition: 0.25s; }
 #themeSelect { margin-bottom: 10px; padding: 8px; font-size: 14px; border-radius: 6px; }
 
-/* THEMES ---------------------------------------------------- */
+
 
 body.theme-ufo { background: #111; color: white; }
 body.theme-ufo #chatbox { background: #222; color: white; }
@@ -98,7 +98,7 @@ body.theme-89 .bot { color: #ffffff; }
     font-weight: bold;
 }
 
-/* IMAGE */
+/* image */
 .page-image {
     max-width: 100%;
     border-radius: 10px;
@@ -161,7 +161,7 @@ async function send() {
             }
         }
 
-        // SUMMARY (REST API — safe)
+        // summary and stuff
         const summaryRes = await fetch(
             `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(pageTitle)}`
         );
@@ -171,7 +171,7 @@ async function send() {
         }
         const data = await summaryRes.json();
 
-        // DISAMBIGUATION
+        // the disambiguation 
         if (data.extract && /(may refer to:|The following .* are|.* can refer to)/i.test(data.extract)) {
             addMessage("bot", `Disambiguation found for "<b>${pageTitle}</b>". Please choose:`);
 
@@ -203,7 +203,7 @@ async function send() {
             return;
         }
 
-        // IMAGE (CORS-SAFE)
+        // grab image from wikipedia
         let html = "";
 
         const imgRes = await fetch(
@@ -242,3 +242,5 @@ function addMessage(type, text) {
 </script>
 </body>
 </html>
+
+<!-- thanks for using my project now gtfo please --> 
